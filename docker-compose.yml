@@ -1,10 +1,14 @@
-chat:
-  build: .
-  command: node_modules/.bin/nodemon index.js
-  environment:
-    NODE_ENV: development
-  ports:
-    - '3000:3000'
-  volumes:
-    - .:/home/app/chat
-    - /home/app/chat/node_modules
+version: '2'
+volumes:
+  nodemodules:
+services:
+  chat:
+    build: .
+    command: node_modules/.bin/nodemon index.js
+    environment:
+      NODE_ENV: development
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/home/app/chat
+      - nodemodules:/home/app/chat/node_modules
