@@ -1,0 +1,8 @@
+version: '3.7'
+
+services:
+  chat:
+    build: .
+    command: echo 'ready'
+    volumes:
+      - .:/srv/chat
