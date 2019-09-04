@@ -1,4 +1,4 @@
-FROM node:10.16.3
+FROM node:10.16.3 AS development
 
 RUN mkdir /srv/chat && chown node:node /srv/chat
 
@@ -10,5 +10,14 @@ COPY --chown=node:node package.json package-lock.json ./
 
 RUN npm install --quiet
 
-# TODO: Can remove once we have some dependencies in package.json.
-RUN mkdir -p node_modules
+FROM node:10.16.3-slim AS production
+
+USER node
+
+WORKDIR /srv/chat
+
+COPY --from=development --chown=root:root /srv/chat/node_modules ./node_modules
+
+COPY . .
+
+CMD ["node", "index.js"]
