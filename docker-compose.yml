@@ -6,3 +6,7 @@ services:
     command: echo 'ready'
     volumes:
       - .:/srv/chat
+      - chat_node_modules:/srv/chat/node_modules
+
+volumes:
+  chat_node_modules:
