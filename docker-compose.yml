@@ -3,7 +3,9 @@ version: '3.7'
 services:
   chat:
     build: .
-    command: echo 'ready'
+    command: node index.js
+    ports:
+      - '3000:3000'
     volumes:
       - .:/srv/chat
       - chat_node_modules:/srv/chat/node_modules
