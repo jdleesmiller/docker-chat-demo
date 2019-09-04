@@ -5,7 +5,7 @@ services:
     build:
       context: .
       target: development
-    command: node index.js
+    command: npx nodemon index.js
     ports:
       - '3000:3000'
     volumes:
